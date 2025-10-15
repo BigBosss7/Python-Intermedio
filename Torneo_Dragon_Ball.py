@@ -109,10 +109,60 @@ class Battle:
         print(f"\n{attacker.name} ataca a {defender.name}")  
         defender.take_damage(attacker.attack)
         
+class Tournament: 
+    
+    def __init__(self, fighters: list[Fighter]):
+        if not Tournament.is_power_of_two(len(fighters)):
+            raise ValueError("El número de luchadores debe ser potencia de 2")
+        self.fighters = fighters
 
-fighter1 = Fighter("Goku", 90, 95, 80)
-fighter2 = Fighter("Vegeta", 95, 90, 82)
+    def start(self):
+        while len(self.fighters) > 1:
+            
+            print (f"\n=== NUEVA RONDA: {len(self.fighters)} LUCHADORES ===")
+            
+            random.shuffle(self.fighters)
+            
+            winners = []
+            
+            for index in range(0, len(self.fighters), 2):
+                fighter1 = self.fighters[index]
+                fighter2 = self.fighters[index + 1]
+                
+                battle = Battle(fighter1, fighter2)
+                winner = battle.fight()
+                winners.append(winner)
+                
+            self.fighters = winners
+            round += 1
+                
+        
+        print(f"\n=== EL GANADOR DEL TORNEO ES {self.fighters[0].name}! ===")  
+    
+    @staticmethod
+    def is_power_of_two(n) -> bool:  
+        if n <= 0:
+            return False
+        while n % 2 == 0:
+            n //= 2
+        return n == 1
+#fighter1 = Fighter("Goku", 90, 95, 80)
+#fighter2 = Fighter("Vegeta", 95, 90, 82)
 
-battle = Battle(fighter1, fighter2)
-winner = battle.fight()
-print(f"Ganador: {winner.name}")
+#battle = Battle(fighter1, fighter2)
+#winner = battle.fight()
+#print(f"Ganador: {winner.name}")
+
+figthers = [
+    Fighter("Goku", 90, 95, 80),
+    Fighter("Vegeta", 95, 90, 82),
+    Fighter("Piccolo", 80, 85, 90),
+    Fighter("Frizeer", 85, 92, 78),
+    Fighter("Cell", 88, 89, 85),
+    Fighter("Majin Boo", 70, 100, 70),
+    Fighter("Trunks", 92, 87, 80),
+    Fighter("Gohan", 89, 88, 84),
+    ]
+
+tournament = Tournament(figthers)
+tournament.start()
