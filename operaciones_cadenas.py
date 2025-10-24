@@ -49,8 +49,8 @@ def check(word1:str, wordS2: str):
     
     def isogram(word:str)-> bool:
         word_dict = dict()
-        for word in word:
-            word_dict[word] = word_dict.get(word, 0) + 1
+        for caracter in word:
+            word_dict[caracter] = word_dict.get(caracter, 0) + 1
         
         isogram = True
         values = list(word_dict.values())
