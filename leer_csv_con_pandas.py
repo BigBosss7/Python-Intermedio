@@ -30,3 +30,12 @@ estadisticas = df.describe()
 
 #accediendo a un elemento especifico con loc (por etiqueta)
 elemento_loc = df.loc[0, "nombre"]
+
+#accediendo a un elemento especifico con iloc (por indice)
+elemento_iloc = df.iloc[:, 1] #accediendo a toda la columna de apellidos
+
+#accediendo a la fila 3 con loc
+fila_3_loc = df.loc[2, :]
+
+#accediendo a filas con edad mayor a 30
+filas_mayores_30 = df.loc[df["edad"] > 30, :]
