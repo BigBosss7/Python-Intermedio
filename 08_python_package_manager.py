@@ -8,7 +8,7 @@
 # pip --version
 
 # pip install numpy
-import pandas
+import pandas; print(pandas.__file__)
 from mypackage import arithmetics
 import requests
 import numpy

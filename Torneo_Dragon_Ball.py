@@ -69,7 +69,8 @@ class Fighter:
                 attack_damage = damage * 0.1
             else:
                 attack_damage = damage - self.defense
-                
+
+            attack_damage = int(attack_damage)   
                 
         self.health = max(self.health - attack_damage, 0)
         print(f"{self.name} recibe {attack_damage} de daño") 
@@ -111,12 +112,13 @@ class Battle:
         
 class Tournament: 
     
-    def __init__(self, fighters: list[Fighter]):
-        if not Tournament.is_power_of_two(len(fighters)):
+    def __init__(self, fighters: list):
+        if not self.is_power_of_two(len(fighters)):
             raise ValueError("El número de luchadores debe ser potencia de 2")
         self.fighters = fighters
 
     def start(self):
+        round = 1
         while len(self.fighters) > 1:
             
             print (f"\n=== NUEVA RONDA: {len(self.fighters)} LUCHADORES ===")
@@ -131,6 +133,7 @@ class Tournament:
                 
                 battle = Battle(fighter1, fighter2)
                 winner = battle.fight()
+                winner.reset_health()
                 winners.append(winner)
                 
             self.fighters = winners
@@ -139,8 +142,8 @@ class Tournament:
         
         print(f"\n=== EL GANADOR DEL TORNEO ES {self.fighters[0].name}! ===")  
     
-    @staticmethod
-    def is_power_of_two(n) -> bool:  
+    
+    def is_power_of_two(self, n) -> bool:  
         if n <= 0:
             return False
         while n % 2 == 0:
@@ -153,7 +156,7 @@ class Tournament:
 #winner = battle.fight()
 #print(f"Ganador: {winner.name}")
 
-figthers = [
+fighters = [
     Fighter("Goku", 90, 95, 80),
     Fighter("Vegeta", 95, 90, 82),
     Fighter("Piccolo", 80, 85, 90),
@@ -164,5 +167,5 @@ figthers = [
     Fighter("Gohan", 89, 88, 84),
     ]
 
-tournament = Tournament(figthers)
+tournament = Tournament(fighters)
 tournament.start()
