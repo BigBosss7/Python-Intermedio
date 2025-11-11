@@ -71,7 +71,7 @@ class Fighter:
                 attack_damage = damage - self.defense
                 
                 
-        self.health = max(self.health - attack_damage, 0)
+        self.health = max(self.health-attack_damage, 0)
         print(f"{self.name} recibe {attack_damage} de daño") 
         print(f"Salud restante de {self.name}: {self.health}")
             
@@ -117,6 +117,7 @@ class Tournament:
         self.fighters = fighters
 
     def start(self):
+        round = 1
         while len(self.fighters) > 1:
             
             print (f"\n=== NUEVA RONDA: {len(self.fighters)} LUCHADORES ===")
@@ -139,8 +140,8 @@ class Tournament:
         
         print(f"\n=== EL GANADOR DEL TORNEO ES {self.fighters[0].name}! ===")  
     
-    @staticmethod
-    def is_power_of_two(n) -> bool:  
+    
+    def self.is_power_of_two(n) -> bool:  
         if n <= 0:
             return False
         while n % 2 == 0:
