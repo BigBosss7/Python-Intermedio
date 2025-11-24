@@ -24,8 +24,8 @@ def print_sound(animal : Animal):
 my_animal= Animal("Animal")
 print_sound(my_animal)
 my_dog= dog("Mike")
-#print_sound(my_dog)
-#my_dog.sound()
+print_sound(my_dog)
+my_dog.sound()
 
 """
 Extra
